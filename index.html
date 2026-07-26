@@ -325,6 +325,24 @@
     display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
     font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-faint); letter-spacing: 0.04em;
   }
+
+  .whatsapp-float {
+    position: fixed;
+    right: clamp(1rem, 4vw, 2rem);
+    bottom: clamp(1rem, 4vw, 2rem);
+    z-index: 60;
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: #25D366;
+    color: #0a0913;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.15), 0 10px 25px rgba(0,0,0,0.4), 0 0 22px rgba(34,231,214,0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .whatsapp-float:hover, .whatsapp-float:focus-visible {
+    transform: scale(1.07);
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.2), 0 12px 30px rgba(0,0,0,0.45), 0 0 32px rgba(34,231,214,0.5);
+  }
 </style>
 </head>
 <body>
@@ -584,6 +602,10 @@
     </div>
   </div>
 </footer>
+
+<a href="https://wa.me/584125550198?text=Hola%2C%20quiero%20reservar%20una%20estaci%C3%B3n%20en%20GLITCH.GG" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" width="26" height="26"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2C6.486 2 2.01 6.477 2.01 11.995c0 1.997.586 3.85 1.6 5.408L2 22l4.72-1.583a9.94 9.94 0 0 0 5.284 1.51h.005c5.517 0 9.993-4.477 9.993-9.995C22.002 6.474 17.526 2 12.004 2Zm5.876 15.865a8.28 8.28 0 0 1-5.876 2.436h-.004a8.27 8.27 0 0 1-4.474-1.31l-.32-.19-3.043 1.02.998-2.968-.21-.32a8.26 8.26 0 0 1-1.263-4.42c0-4.577 3.72-8.297 8.297-8.297 2.216 0 4.298.863 5.867 2.432a8.24 8.24 0 0 1 2.428 5.87c0 4.577-3.72 8.297-8.4 8.297Z"/></svg>
+</a>
 
 <script>
   const form = document.getElementById('reserveForm');
