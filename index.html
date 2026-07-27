@@ -3,7 +3,16 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>GLITCH.GG — Reserva tu sesión de PS5 y VR</title>
+<title>D&amp;M TU ZONA GAMER — Reserva tu sesión de PS5 y VR</title>
+<meta name="description" content="Reserva tu estación de PS5 o cabina de realidad virtual en D&amp;M TU ZONA GAMER. Reserva desde tu celular, sin apps, confirmación por WhatsApp." />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230a0a12'/><text x='50' y='68' font-size='58' text-anchor='middle'>%F0%9F%8E%AE</text></svg>" />
+<meta name="theme-color" content="#0a0a12" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="D&amp;M TU ZONA GAMER — Reserva tu sesión de PS5 y VR" />
+<meta property="og:description" content="Reserva tu estación de PS5 o cabina de realidad virtual desde tu celular. Confirmación por WhatsApp en minutos." />
+<meta property="og:image" content="https://rogers980.github.io/glitch-gg/images/glitchgg_ps5.jpg" />
+<meta property="og:url" content="https://rogers980.github.io/glitch-gg/" />
+<meta name="twitter:card" content="summary_large_image" />
 <style>
   @font-face {
     font-family: 'Michroma';
@@ -227,6 +236,8 @@
     font-family: var(--font-mono); font-size: 0.85rem;
   }
   .station-option b { color: var(--accent-2); font-weight: 400; }
+  .station-option b.taken { color: var(--accent); }
+  .stations-live-tag { font-size: 0.65rem; color: var(--text-faint); text-transform: none; letter-spacing: 0; }
 
   /* ---------- CONSOLAS ---------- */
   .console-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
@@ -326,6 +337,7 @@
   .footer-col h4 { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 0.9rem; }
   .footer-col p, .footer-col a { font-size: 0.88rem; color: var(--text-dim); text-decoration: none; display: block; margin-bottom: 0.4rem; }
   .footer-col a:hover { color: var(--accent-2); }
+  .footer-ig-pending { font-size: 0.88rem; color: var(--text-faint); display: block; margin-bottom: 0.4rem; }
   .footer-bottom {
     margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--line);
     display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
@@ -355,7 +367,7 @@
 
 <header class="nav">
   <div class="nav-inner">
-    <div class="logo">GLITCH<span>.GG</span></div>
+    <div class="logo">D&amp;M <span>TU ZONA GAMER</span></div>
     <nav class="links">
       <a href="#reservar">Reservar</a>
       <a href="#consolas">Consolas</a>
@@ -404,11 +416,13 @@
         </div>
       </div>
       <div class="station-picker">
-        <span class="eyebrow" style="color:var(--accent)">Estaciones</span>
-        <div class="station-option">PS5 · Estación 1 <b>Libre</b></div>
-        <div class="station-option">PS5 · Estación 2 <b>Libre</b></div>
-        <div class="station-option">PS5 · Estación 3 <b>Ocupada</b></div>
-        <div class="station-option">Cabina VR <b>Libre</b></div>
+        <span class="eyebrow" style="color:var(--accent)">Estaciones <span id="stationsLiveTag" class="stations-live-tag">· en vivo</span></span>
+        <div id="stationList">
+          <div class="station-option">PS5 · Estación 1 <b>Libre</b></div>
+          <div class="station-option">PS5 · Estación 2 <b>Libre</b></div>
+          <div class="station-option">PS5 · Estación 3 <b>Ocupada</b></div>
+          <div class="station-option">Cabina VR <b>Libre</b></div>
+        </div>
       </div>
     </div>
   </div>
@@ -479,24 +493,24 @@
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Galería</span>
-      <h2>Así se vive una sesión en GLITCH.GG.</h2>
+      <h2>Así se vive una sesión en D&amp;M TU ZONA GAMER.</h2>
       <p>Espacio para fotos y videos reales del local — sube las tuyas cuando las tengas.</p>
     </div>
     <div class="gallery-grid">
       <div class="gallery-card photo">
-        <img src="images/glitchgg_ps5.jpg" alt="Estación PS5 en GLITCH.GG" loading="lazy" />
+        <img src="images/glitchgg_ps5.jpg" alt="Estación PS5 en D&amp;M TU ZONA GAMER" loading="lazy" />
         <span>Estaciones PS5</span>
       </div>
       <div class="gallery-card photo">
-        <img src="images/glitchgg_vr.jpg" alt="Cabina de realidad virtual en GLITCH.GG" loading="lazy" />
+        <img src="images/glitchgg_vr.jpg" alt="Cabina de realidad virtual en D&amp;M TU ZONA GAMER" loading="lazy" />
         <span>Cabina VR</span>
       </div>
       <div class="gallery-card photo">
-        <img src="images/glitchgg_torneo.jpg" alt="Torneo en GLITCH.GG" loading="lazy" />
+        <img src="images/glitchgg_torneo.jpg" alt="Torneo en D&amp;M TU ZONA GAMER" loading="lazy" />
         <span>Torneos</span>
       </div>
       <div class="gallery-card photo">
-        <img src="images/glitchgg_comunidad.jpg" alt="Comunidad de GLITCH.GG jugando juntos" loading="lazy" />
+        <img src="images/glitchgg_comunidad.jpg" alt="Comunidad de D&amp;M TU ZONA GAMER jugando juntos" loading="lazy" />
         <span>La comunidad</span>
       </div>
     </div>
@@ -558,14 +572,15 @@
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-col">
-        <h4>GLITCH.GG</h4>
+        <h4>D&amp;M TU ZONA GAMER</h4>
         <p>Urb. Soler, Parcela 319, Av. 47L con calle 204A, manzana 8, Casa N° 204-37</p>
         <p>Lunes a domingo · 2:00 PM – 2:00 AM</p>
       </div>
       <div class="footer-col">
         <h4>Contacto</h4>
-        <a href="#">WhatsApp: 0412-555-0198</a>
-        <a href="#">@glitch.gg</a>
+        <a href="https://wa.me/584125550198?text=Hola%2C%20quiero%20reservar%20una%20estaci%C3%B3n%20en%20D%26M%20TU%20ZONA%20GAMER" target="_blank" rel="noopener">WhatsApp: 0412-555-0198</a>
+        <!-- @dmtuzonagamer: agregar href real de Instagram cuando exista la cuenta -->
+        <span class="footer-ig-pending">@dmtuzonagamer</span>
       </div>
       <div class="footer-col">
         <h4>Explorar</h4>
@@ -575,13 +590,13 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 GLITCH.GG</span>
+      <span>© 2026 D&amp;M TU ZONA GAMER</span>
       <span>SYSTEM STATUS: ONLINE</span>
     </div>
   </div>
 </footer>
 
-<a href="https://wa.me/584125550198?text=Hola%2C%20quiero%20reservar%20una%20estaci%C3%B3n%20en%20GLITCH.GG" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Escríbenos por WhatsApp">
+<a href="https://wa.me/584125550198?text=Hola%2C%20quiero%20reservar%20una%20estaci%C3%B3n%20en%20D%26M%20TU%20ZONA%20GAMER" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Escríbenos por WhatsApp">
   <svg viewBox="0 0 24 24" fill="currentColor" width="26" height="26"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2C6.486 2 2.01 6.477 2.01 11.995c0 1.997.586 3.85 1.6 5.408L2 22l4.72-1.583a9.94 9.94 0 0 0 5.284 1.51h.005c5.517 0 9.993-4.477 9.993-9.995C22.002 6.474 17.526 2 12.004 2Zm5.876 15.865a8.28 8.28 0 0 1-5.876 2.436h-.004a8.27 8.27 0 0 1-4.474-1.31l-.32-.19-3.043 1.02.998-2.968-.21-.32a8.26 8.26 0 0 1-1.263-4.42c0-4.577 3.72-8.297 8.297-8.297 2.216 0 4.298.863 5.867 2.432a8.24 8.24 0 0 1 2.428 5.87c0 4.577-3.72 8.297-8.4 8.297Z"/></svg>
 </a>
 
@@ -590,9 +605,46 @@
   const confirmMsg = document.getElementById('confirmMsg');
   form.addEventListener('submit', (e) => {
     e.preventDefault();
+    const estacionSelect = form.estacion;
+    const estacionTexto = estacionSelect.options[estacionSelect.selectedIndex].text;
+    const lineas = [
+      'Hola, quiero reservar en D&M TU ZONA GAMER.',
+      `Nombre: ${form.nombre.value}`,
+      `WhatsApp: ${form.telefono.value}`,
+      `Fecha: ${form.fecha.value}`,
+      `Hora: ${form.hora.value}`,
+      `Estación: ${estacionTexto}`,
+    ];
+    if (form.nota.value) lineas.push(`Nota: ${form.nota.value}`);
+    const mensaje = encodeURIComponent(lineas.join('\n'));
+    window.open(`https://wa.me/584125550198?text=${mensaje}`, '_blank');
     confirmMsg.classList.add('show');
     form.querySelector('button[type="submit"]').setAttribute('disabled', 'true');
   });
+
+  const SUPABASE_URL = 'https://tnwgqivmigqlckmiazhc.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable__vqdpsAOeOFaAHIb7vg3jw_WhMkm7Su';
+
+  async function cargarEstaciones() {
+    const stationList = document.getElementById('stationList');
+    const liveTag = document.getElementById('stationsLiveTag');
+    try {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/estaciones?select=nombre,estado&order=id`, {
+        headers: { apikey: SUPABASE_KEY },
+      });
+      if (!res.ok) throw new Error('respuesta no ok');
+      const estaciones = await res.json();
+      if (!estaciones.length) throw new Error('sin datos');
+      stationList.innerHTML = estaciones.map((e) => {
+        const libre = e.estado === 'libre';
+        return `<div class="station-option">${e.nombre} <b class="${libre ? '' : 'taken'}">${libre ? 'Libre' : 'Ocupada'}</b></div>`;
+      }).join('');
+      liveTag.textContent = '· en vivo';
+    } catch (err) {
+      liveTag.textContent = '· no disponible ahora, escríbenos por WhatsApp';
+    }
+  }
+  cargarEstaciones();
 
   const canvas = document.getElementById('grid-canvas');
   const ctx = canvas.getContext('2d');
