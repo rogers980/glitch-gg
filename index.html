@@ -170,7 +170,7 @@
     text-transform: uppercase;
     text-decoration: none;
     padding: 0.65rem 1.3rem;
-    border-radius: 2px;
+    border-radius: 10px;
     border: 1px solid var(--marquesina);
     color: var(--marquesina);
     background: transparent;
@@ -247,11 +247,11 @@
   .hero-cta-row .btn { padding: 0.9rem 1.7rem; font-size: 0.82rem; }
 
   .hero-live-panel {
-    background: var(--superficie);
-    border: 1px solid var(--linea);
-    border-radius: 10px;
-    padding: 1.5rem 1.5rem 1.35rem;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+    background: linear-gradient(165deg, var(--superficie-alta), var(--superficie));
+    border: 1px solid rgba(255,176,32,0.16);
+    border-radius: 18px;
+    padding: 1.6rem 1.6rem 1.4rem;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 40px -12px rgba(255,176,32,0.18);
   }
   .panel-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.1rem; }
   .live-badge {
@@ -274,10 +274,11 @@
 
   /* ---------- RESERVAS (calendario simple) ---------- */
   .booking-shell {
-    background: var(--superficie);
+    background: linear-gradient(165deg, var(--superficie-alta), var(--superficie));
     border: 1px solid var(--linea);
-    border-radius: 6px;
+    border-radius: 18px;
     padding: clamp(1.5rem, 4vw, 2.5rem);
+    box-shadow: 0 20px 50px -20px rgba(0,0,0,0.6);
   }
   .slot-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6rem; margin-top: 1rem; }
   @media (max-width: 480px) { .slot-grid { grid-template-columns: repeat(3, 1fr); } }
@@ -285,18 +286,22 @@
     font-family: var(--font-mono);
     font-size: 0.78rem;
     text-align: center;
-    padding: 0.55rem 0.3rem;
-    border-radius: 3px;
+    padding: 0.6rem 0.3rem;
+    border-radius: 10px;
     border: 1px solid var(--linea-fuerte);
     color: var(--humo);
+    transition: transform 0.15s ease;
   }
   .slot.free { color: var(--marquesina); border-color: rgba(255,176,32,0.35); }
+  .slot.free:hover { transform: translateY(-2px); }
   .slot.taken { color: var(--text-faint); background: var(--superficie-alta); text-decoration: line-through; border-color: rgba(232,67,47,0.25); }
   .station-picker { display: flex; flex-direction: column; gap: 0.75rem; }
   .station-option {
     display: flex; justify-content: space-between; align-items: center;
-    border: 1px solid var(--linea); border-radius: 4px; padding: 0.9rem 1.1rem;
+    border: 1px solid var(--linea); border-radius: 12px; padding: 0.9rem 1.2rem;
     font-family: var(--font-mono); font-size: 0.85rem;
+    background: rgba(255,255,255,0.015);
+    transition: border-color 0.2s ease, background 0.2s ease;
     animation: station-in 0.4s ease both;
   }
   @keyframes station-in { from { opacity: 0; transform: translateX(-6px); } to { opacity: 1; transform: none; } }
@@ -307,6 +312,7 @@
   .station-option:nth-child(5) { animation-delay: 0.25s; }
   .station-option:nth-child(6) { animation-delay: 0.3s; }
   .station-option:nth-child(7) { animation-delay: 0.35s; }
+  .station-option:hover { border-color: rgba(255,176,32,0.3); background: rgba(255,176,32,0.04); }
   .station-option b { color: var(--marquesina); font-weight: 400; }
   .station-option b.taken { color: var(--boton-rojo-texto); }
 
@@ -314,10 +320,11 @@
   .console-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
   .console-card {
     position: relative; overflow: hidden;
-    background: var(--superficie); border: 1px solid var(--linea); border-radius: 4px;
-    padding: 1.75rem; display: flex; flex-direction: column; gap: 1.1rem;
+    background: linear-gradient(165deg, var(--superficie-alta), var(--superficie));
+    border: 1px solid var(--linea); border-radius: 18px;
+    padding: 1.85rem; display: flex; flex-direction: column; gap: 1.1rem;
+    box-shadow: 0 18px 40px -22px rgba(0,0,0,0.7);
     transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
-    transition: border-color 0.25s ease, transform 0.25s ease;
   }
   .console-card::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
@@ -325,8 +332,8 @@
     transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease;
   }
   .console-card:hover {
-    border-color: var(--marquesina); transform: translateY(-4px);
-    box-shadow: 0 14px 32px -12px rgba(0,0,0,0.5);
+    border-color: var(--marquesina); transform: translateY(-6px) scale(1.015);
+    box-shadow: 0 22px 48px -16px rgba(0,0,0,0.6), 0 0 32px -8px rgba(255,176,32,0.25);
   }
   .console-card:hover::before { transform: scaleX(1); }
   .console-name { font-family: var(--font-body); font-weight: 700; font-size: 1.1rem; }
@@ -346,7 +353,12 @@
   .vr-feature-list { margin-top: 1.75rem; display: flex; flex-direction: column; gap: 0.9rem; }
   .vr-feature { display: flex; gap: 0.85rem; align-items: flex-start; font-size: 0.95rem; }
   .vr-feature .mk { font-family: var(--font-mono); color: var(--boton-rojo-texto); flex-shrink: 0; }
-  .vr-panel { background: var(--superficie); border: 1px solid rgba(232,67,47,0.3); border-radius: 4px; padding: 2rem; font-family: var(--font-mono); }
+  .vr-panel {
+    background: linear-gradient(165deg, var(--superficie-alta), var(--superficie));
+    border: 1px solid rgba(232,67,47,0.3); border-radius: 18px; padding: 2rem;
+    font-family: var(--font-mono);
+    box-shadow: 0 24px 55px -22px rgba(0,0,0,0.7), 0 0 36px -14px rgba(232,67,47,0.22);
+  }
   .vr-panel .row { display: flex; justify-content: space-between; padding: 0.6rem 0; border-bottom: 1px dashed var(--linea); font-size: 0.85rem; }
   .vr-panel .row:last-child { border-bottom: none; }
   .vr-panel .row b { color: var(--boton-rojo-texto); font-weight: 400; }
@@ -356,14 +368,18 @@
   .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; }
   .gallery-card {
     aspect-ratio: 4 / 3;
-    border-radius: 4px;
+    border-radius: 16px;
     border: 1px solid var(--linea);
     display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem;
     font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
     color: var(--humo);
     position: relative;
     overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
+  .gallery-card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px -18px rgba(0,0,0,0.6); }
+  .gallery-card img { transition: transform 0.4s ease; }
+  .gallery-card:hover img { transform: scale(1.06); }
   .gallery-card::before {
     content: "";
     position: absolute; inset: 0;
@@ -387,7 +403,11 @@
   }
 
   /* ---------- RESERVA / CONTACTO ---------- */
-  .reserve-shell { background: var(--superficie); border: 1px solid var(--linea); border-radius: 6px; padding: clamp(1.75rem, 4vw, 3rem); position: relative; }
+  .reserve-shell {
+    background: linear-gradient(165deg, var(--superficie-alta), var(--superficie));
+    border: 1px solid var(--linea); border-radius: 20px; padding: clamp(1.75rem, 4vw, 3rem); position: relative;
+    box-shadow: 0 24px 60px -24px rgba(0,0,0,0.7);
+  }
   .reserve-shell::before {
     content: "· RESERVA TU PUESTO ·"; position: absolute; top: -0.65rem; left: clamp(1.75rem, 4vw, 3rem);
     background: var(--noche); padding: 0 0.6rem; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; color: var(--marquesina);
@@ -399,7 +419,7 @@
   .field label { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--humo); }
   .field input, .field select, .field textarea {
     background: var(--noche); border: 1px solid var(--linea-fuerte); color: var(--hueso);
-    font-family: var(--font-body); font-size: 0.95rem; padding: 0.75rem 0.9rem; border-radius: 2px;
+    font-family: var(--font-body); font-size: 0.95rem; padding: 0.8rem 1rem; border-radius: 10px;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
   }
   .field input:focus, .field select:focus, .field textarea:focus {
@@ -410,7 +430,7 @@
   .form-note { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-faint); }
   .confirm-msg {
     display: none; grid-column: 1 / -1; border: 1px solid var(--marquesina); background: var(--marquesina-suave); color: var(--marquesina);
-    font-family: var(--font-mono); font-size: 0.85rem; padding: 1rem 1.2rem; border-radius: 3px;
+    font-family: var(--font-mono); font-size: 0.85rem; padding: 1rem 1.2rem; border-radius: 12px;
   }
   .confirm-msg.show { display: block; }
   .confirm-msg.blocked { border-color: var(--boton-rojo); background: var(--boton-rojo-suave); color: var(--boton-rojo-texto); }
