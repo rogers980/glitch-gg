@@ -13,6 +13,30 @@
 <meta property="og:image" content="https://rogers980.github.io/glitch-gg/images/glitchgg_ps5.jpg" />
 <meta property="og:url" content="https://rogers980.github.io/glitch-gg/" />
 <meta name="twitter:card" content="summary_large_image" />
+<link rel="canonical" href="https://rogers980.github.io/glitch-gg/" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "D&M TU ZONA GAMER",
+  "image": "https://rogers980.github.io/glitch-gg/images/glitchgg_ps5.jpg",
+  "url": "https://rogers980.github.io/glitch-gg/",
+  "telephone": "+584125550198",
+  "priceRange": "$1.50 - $4.00",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Parcela 319, Av. 47L con calle 204A, manzana 8, Casa N° 204-37, Urb. Soler",
+    "addressLocality": "Maracaibo",
+    "addressCountry": "VE"
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    "opens": "14:00",
+    "closes": "02:00"
+  }
+}
+</script>
 <link rel="preload" as="image" href="images/glitchgg_ps5.jpg" fetchpriority="high" />
 <link rel="preload" as="font" type="font/woff2" href="./fonts/bungee.woff2" crossorigin />
 <style>
@@ -186,7 +210,20 @@
     background-position: center 30%;
     background-repeat: no-repeat;
   }
-  .hero-content { max-width: 1180px; margin: 0 auto; padding: 2.5rem clamp(1.25rem, 4vw, 3rem); width: 100%; }
+  .hero::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.05; mix-blend-mode: overlay;
+  }
+  .hero::after {
+    content: ''; position: absolute; z-index: 1; pointer-events: none;
+    top: -10%; right: -8%; width: 55%; aspect-ratio: 1; border-radius: 50%;
+    background: radial-gradient(circle, var(--boton-rojo-suave), transparent 70%);
+    filter: blur(10px);
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 1180px; margin: 0 auto; padding: 2.5rem clamp(1.25rem, 4vw, 3rem); width: 100%; }
+  .hero-content { animation: hero-rise 0.7s ease both; }
+  @keyframes hero-rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
   .hero-grid { display: grid; grid-template-columns: 1fr; gap: 2.25rem; }
   @media (min-width: 900px) {
     .hero-grid { grid-template-columns: 1.15fr 0.85fr; align-items: center; gap: clamp(2rem, 4vw, 3.5rem); }
@@ -260,18 +297,38 @@
     display: flex; justify-content: space-between; align-items: center;
     border: 1px solid var(--linea); border-radius: 4px; padding: 0.9rem 1.1rem;
     font-family: var(--font-mono); font-size: 0.85rem;
+    animation: station-in 0.4s ease both;
   }
+  @keyframes station-in { from { opacity: 0; transform: translateX(-6px); } to { opacity: 1; transform: none; } }
+  .station-option:nth-child(1) { animation-delay: 0.05s; }
+  .station-option:nth-child(2) { animation-delay: 0.1s; }
+  .station-option:nth-child(3) { animation-delay: 0.15s; }
+  .station-option:nth-child(4) { animation-delay: 0.2s; }
+  .station-option:nth-child(5) { animation-delay: 0.25s; }
+  .station-option:nth-child(6) { animation-delay: 0.3s; }
+  .station-option:nth-child(7) { animation-delay: 0.35s; }
   .station-option b { color: var(--marquesina); font-weight: 400; }
   .station-option b.taken { color: var(--boton-rojo-texto); }
 
   /* ---------- CONSOLAS ---------- */
   .console-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
   .console-card {
+    position: relative; overflow: hidden;
     background: var(--superficie); border: 1px solid var(--linea); border-radius: 4px;
     padding: 1.75rem; display: flex; flex-direction: column; gap: 1.1rem;
+    transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
     transition: border-color 0.25s ease, transform 0.25s ease;
   }
-  .console-card:hover { border-color: var(--marquesina); transform: translateY(-3px); }
+  .console-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--marquesina), var(--boton-rojo));
+    transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease;
+  }
+  .console-card:hover {
+    border-color: var(--marquesina); transform: translateY(-4px);
+    box-shadow: 0 14px 32px -12px rgba(0,0,0,0.5);
+  }
+  .console-card:hover::before { transform: scaleX(1); }
   .console-name { font-family: var(--font-body); font-weight: 700; font-size: 1.1rem; }
   .console-price { font-family: var(--font-mono); font-size: 1.7rem; color: var(--marquesina); }
   .console-price span { font-size: 0.9rem; color: var(--humo); }
@@ -542,19 +599,19 @@
     </div>
     <div class="gallery-grid">
       <div class="gallery-card photo">
-        <img src="images/glitchgg_ps5.jpg" alt="Estación PS5 en D&amp;M TU ZONA GAMER" loading="lazy" />
+        <img src="images/glitchgg_ps5.jpg" alt="Estación PS5 en D&amp;M TU ZONA GAMER" loading="lazy" width="640" height="480" />
         <span>Estaciones PS5</span>
       </div>
       <div class="gallery-card photo">
-        <img src="images/glitchgg_vr.jpg" alt="Cabina de realidad virtual en D&amp;M TU ZONA GAMER" loading="lazy" />
+        <img src="images/glitchgg_vr.jpg" alt="Cabina de realidad virtual en D&amp;M TU ZONA GAMER" loading="lazy" width="640" height="480" />
         <span>Cabina VR</span>
       </div>
       <div class="gallery-card photo">
-        <img src="images/glitchgg_torneo.jpg" alt="Torneo en D&amp;M TU ZONA GAMER" loading="lazy" />
+        <img src="images/glitchgg_torneo.jpg" alt="Torneo en D&amp;M TU ZONA GAMER" loading="lazy" width="640" height="480" />
         <span>Torneos</span>
       </div>
       <div class="gallery-card photo">
-        <img src="images/glitchgg_comunidad.jpg" alt="Comunidad de D&amp;M TU ZONA GAMER jugando juntos" loading="lazy" />
+        <img src="images/glitchgg_comunidad.jpg" alt="Comunidad de D&amp;M TU ZONA GAMER jugando juntos" loading="lazy" width="640" height="480" />
         <span>La comunidad</span>
       </div>
     </div>
