@@ -21,7 +21,7 @@
   "name": "D&M TU ZONA GAMER",
   "image": "https://rogers980.github.io/glitch-gg/images/glitchgg_ps5.jpg",
   "url": "https://rogers980.github.io/glitch-gg/",
-  "telephone": "+584125550198",
+  "telephone": "+18328083164",
   "priceRange": "$1.50 - $4.00",
   "address": {
     "@type": "PostalAddress",
@@ -32,8 +32,8 @@
   "openingHoursSpecification": {
     "@type": "OpeningHoursSpecification",
     "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-    "opens": "14:00",
-    "closes": "02:00"
+    "opens": "10:00",
+    "closes": "22:00"
   }
 }
 </script>
@@ -186,13 +186,6 @@
   .hero p.tagline .accent { color: var(--violet); }
   .hero p.sub { margin-top: 1rem; max-width: 46ch; color: #D7D2E2; font-size: 1.05rem; text-shadow: 0 2px 8px rgba(0,0,0,0.85); }
   .hero-cta-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-top: 2.2rem; }
-
-  .hero-shot { position: relative; margin-top: 3rem; max-width: 640px; width: 100%; border-radius: 18px; overflow: hidden; aspect-ratio: 16/9; }
-  .hero-shot-video { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.1) contrast(1.05); }
-  .hero-shot::after { content: ''; position: absolute; inset: -20px; z-index: -1; background: radial-gradient(ellipse 70% 60% at 50% 55%, var(--violet-glow), transparent 70%); filter: blur(10px); }
-  /* Quien pide menos movimiento, o esta en una conexion lenta, ve el poster fijo — el <video>
-     con autoplay muted igual respeta reduced-motion pausandose, sin JS extra: */
-  @media (prefers-reduced-motion: reduce) { .hero-shot-video { animation: none; } }
 
   /* ---------- SECCIÓN CLARA DE CONTRASTE ---------- */
   .paper { background: var(--paper); color: var(--paper-ink); padding: clamp(4rem, 10vw, 7rem) 0; }
@@ -564,7 +557,7 @@
       </div>
       <div class="footer-col">
         <h4>Contacto</h4>
-        <a href="https://wa.me/584125550198?text=Hola%2C%20quiero%20reservar%20una%20estaci%C3%B3n%20en%20D%26M%20TU%20ZONA%20GAMER" target="_blank" rel="noopener">WhatsApp: 0412-555-0198</a>
+        <a href="https://wa.me/18328083164?text=Hola%2C%20quiero%20reservar%20una%20estaci%C3%B3n%20en%20D%26M%20TU%20ZONA%20GAMER" target="_blank" rel="noopener">WhatsApp: +1 (832) 808-3164</a>
         <!-- @dmtuzonagamer: agregar href real de Instagram cuando exista la cuenta -->
         <span class="footer-ig-pending">@dmtuzonagamer</span>
       </div>
@@ -582,7 +575,7 @@
   </div>
 </footer>
 
-<a href="https://wa.me/584125550198?text=Hola%2C%20quiero%20reservar%20una%20estaci%C3%B3n%20en%20D%26M%20TU%20ZONA%20GAMER" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Escríbenos por WhatsApp">
+<a href="https://wa.me/18328083164?text=Hola%2C%20quiero%20reservar%20una%20estaci%C3%B3n%20en%20D%26M%20TU%20ZONA%20GAMER" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Escríbenos por WhatsApp">
   <svg viewBox="0 0 24 24" fill="currentColor" width="26" height="26"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2C6.486 2 2.01 6.477 2.01 11.995c0 1.997.586 3.85 1.6 5.408L2 22l4.72-1.583a9.94 9.94 0 0 0 5.284 1.51h.005c5.517 0 9.993-4.477 9.993-9.995C22.002 6.474 17.526 2 12.004 2Zm5.876 15.865a8.28 8.28 0 0 1-5.876 2.436h-.004a8.27 8.27 0 0 1-4.474-1.31l-.32-.19-3.043 1.02.998-2.968-.21-.32a8.26 8.26 0 0 1-1.263-4.42c0-4.577 3.72-8.297 8.297-8.297 2.216 0 4.298.863 5.867 2.432a8.24 8.24 0 0 1 2.428 5.87c0 4.577-3.72 8.297-8.4 8.297Z"/></svg>
 </a>
 
@@ -603,7 +596,7 @@
     ];
     if (form.nota.value) lineas.push(`Nota: ${form.nota.value}`);
     const mensaje = encodeURIComponent(lineas.join('\n'));
-    const ventana = window.open(`https://wa.me/584125550198?text=${mensaje}`, '_blank');
+    const ventana = window.open(`https://wa.me/18328083164?text=${mensaje}`, '_blank');
     confirmMsg.classList.remove('blocked');
     if (ventana) {
       confirmMsg.textContent = 'Se abrió WhatsApp con tu solicitud — confirma el envío allá para reservar tu estación.';
