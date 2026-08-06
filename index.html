@@ -102,7 +102,7 @@
   .btn:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--violet); outline-offset: 3px; }
 
   /* ---------- NAV ---------- */
-  header.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 60; background: linear-gradient(180deg, rgba(10,8,18,0.85), transparent 130%); }
+  header.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 60; background: linear-gradient(180deg, rgba(10,8,18,0.95) 0%, rgba(10,8,18,0.8) 70%, transparent 100%); }
   .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 1.4rem clamp(1.25rem, 4vw, 3.5rem); max-width: var(--container); margin: 0 auto; gap: 1rem; }
   /* Logo: brillo tipo holograma en bucle lento (siempre visible, sutil) + inclinacion 3D
      al pasar el mouse/tocar (mismo lenguaje del titular del hero, a escala de nav). */
@@ -122,8 +122,8 @@
   .logo span { color: var(--violet); display: block; font-size: 0.6rem; letter-spacing: 0.2em; margin-top: 0.15rem; text-shadow: 0 0 12px var(--violet-glow); }
   nav.links { display: none; gap: clamp(1rem, 2.4vw, 2rem); font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; }
   @media (min-width: 900px) { nav.links { display: flex; } }
-  nav.links a { text-decoration: none; color: var(--muted); transition: color 0.2s ease; white-space: nowrap; }
-  nav.links a:hover, nav.links a:focus-visible { color: var(--white); }
+  nav.links a { text-decoration: none; color: var(--white); text-shadow: 0 2px 8px rgba(0,0,0,0.7); transition: color 0.2s ease; white-space: nowrap; }
+  nav.links a:hover, nav.links a:focus-visible { color: var(--violet); }
   .nav-cta { display: none; }
   @media (min-width: 640px) { .nav-cta { display: inline-flex; padding: 0.65rem 1.4rem; font-size: 0.7rem; } }
 
@@ -142,7 +142,7 @@
   .hero-bg-video { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; }
   /* Velo oscuro + violeta encima del video, para que el titular y el texto sigan
      leyendose sin importar que frame del clip este pasando en ese momento. */
-  .hero-video-scrim { position: absolute; inset: 0; z-index: 0; background: linear-gradient(180deg, rgba(10,8,18,0.55) 0%, rgba(10,8,18,0.75) 55%, rgba(10,8,18,0.92) 100%), radial-gradient(ellipse 70% 55% at 50% 40%, rgba(139,60,255,0.18), transparent 70%); }
+  .hero-video-scrim { position: absolute; inset: 0; z-index: 0; background: linear-gradient(180deg, rgba(10,8,18,0.78) 0%, rgba(10,8,18,0.6) 30%, rgba(10,8,18,0.72) 60%, rgba(10,8,18,0.9) 100%), radial-gradient(ellipse 60% 50% at 50% 38%, rgba(10,8,18,0.55), transparent 72%); }
   .hero-wires { position: absolute; inset: 0; z-index: 0; opacity: 0.5; pointer-events: none; }
   .hero-wires svg { width: 100%; height: 100%; }
   .hero-radial { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: radial-gradient(ellipse 60% 55% at 50% 42%, var(--violet-soft), transparent 70%); }
@@ -182,9 +182,9 @@
       4px 4px 0 #2a1250, 5px 5px 0 #1a0a33, 6px 6px 10px rgba(0,0,0,0.6),
       0 0 50px rgba(139,60,255,0.55);
   }
-  .hero p.tagline { margin-top: 1rem; font-size: clamp(1.1rem, 2.2vw, 1.5rem); color: var(--white); font-weight: 600; }
+  .hero p.tagline { margin-top: 1rem; font-size: clamp(1.1rem, 2.2vw, 1.5rem); color: var(--white); font-weight: 600; text-shadow: 0 2px 10px rgba(0,0,0,0.85), 0 0 24px rgba(10,8,18,0.6); }
   .hero p.tagline .accent { color: var(--violet); }
-  .hero p.sub { margin-top: 1rem; max-width: 46ch; color: var(--muted); font-size: 1.05rem; }
+  .hero p.sub { margin-top: 1rem; max-width: 46ch; color: #D7D2E2; font-size: 1.05rem; text-shadow: 0 2px 8px rgba(0,0,0,0.85); }
   .hero-cta-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-top: 2.2rem; }
 
   .hero-shot { position: relative; margin-top: 3rem; max-width: 640px; width: 100%; border-radius: 18px; overflow: hidden; aspect-ratio: 16/9; }
@@ -204,6 +204,34 @@
   .paper-cta { margin-top: 1.8rem; }
   .paper-photo { border-radius: 18px; overflow: hidden; aspect-ratio: 4/3; }
   .paper-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* ---------- BURBUJAS TIPO "LOBBY" — referencia: Dosis de Moda usa blobs de color,
+     acá se traduce a esferas de vidrio violeta subiendo, como una pantalla de
+     "buscando partida" (Fortnite/Valorant/Discord). Un solo acento, no rompe la regla. ---------- */
+  .paper { position: relative; isolation: isolate; }
+  .paper-bubbles { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+  .bubble {
+    position: absolute; bottom: -80px;
+    width: var(--s, 46px); height: var(--s, 46px); border-radius: 50%;
+    background: radial-gradient(circle at 32% 28%, rgba(255,255,255,0.5), rgba(139,60,255,0.10) 55%, rgba(139,60,255,0.02) 75%);
+    border: 1px solid rgba(139,60,255,0.35);
+    box-shadow: inset 0 0 10px rgba(255,255,255,0.3), 0 8px 18px -8px rgba(139,60,255,0.25);
+    animation: bubbleRise var(--dur, 11s) linear infinite;
+    animation-delay: var(--delay, 0s);
+  }
+  @keyframes bubbleRise {
+    0%   { transform: translateY(0) translateX(0); opacity: 0; }
+    10%  { opacity: 0.8; }
+    85%  { opacity: 0.45; }
+    100% { transform: translateY(-620px) translateX(var(--drift, 18px)); opacity: 0; }
+  }
+  .paper-grid, .nav-cards { position: relative; z-index: 1; }
+  .paper-glass {
+    padding: clamp(1.75rem, 3vw, 2.5rem); border-radius: 22px;
+    background: rgba(245,241,236,0.62); border: 1px solid rgba(139,60,255,0.18);
+    backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%);
+    box-shadow: 0 20px 45px -25px rgba(139,60,255,0.25);
+  }
 
   .nav-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin-top: clamp(3rem, 6vw, 4.5rem); }
   .nav-card { position: relative; aspect-ratio: 4/3; border-radius: 16px; overflow: hidden; display: flex; align-items: flex-end; padding: 1.25rem; text-decoration: none; }
@@ -347,7 +375,7 @@
       <path d="M32 4 L58 16 V44 L32 60 L6 44 V16 Z" stroke="#8B3CFF" stroke-width="2.5"/>
       <path d="M20 30 L28 38 L44 22" stroke="#8B3CFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
-    <div class="hero-status"><span class="dot-live"></span> Abierto ahora · hasta las 2:00 AM</div>
+    <div class="hero-status"><span class="dot-live"></span> Abierto ahora · hasta las 10:00 PM</div>
     <div class="hero-3d" id="hero3d"><h1>D&amp;M <span class="accent">TU ZONA GAMER</span></h1></div>
     <p class="tagline">Juega con tus panas en PS5 y VR</p>
     <p class="sub">Aparta tu puesto desde el celular en un minuto, sin bajar ninguna app. Confirmación por WhatsApp, aquí mismo en Urb. El Soler.</p>
@@ -360,9 +388,17 @@
 </section>
 
 <section class="paper" id="comunidad">
+  <div class="paper-bubbles" aria-hidden="true">
+    <span class="bubble" style="--s:34px; left:8%;  --dur:10s; --delay:0s;   --drift:14px;"></span>
+    <span class="bubble" style="--s:52px; left:22%; --dur:13s; --delay:-4s;  --drift:-20px;"></span>
+    <span class="bubble" style="--s:26px; left:38%; --dur:9s;  --delay:-1.5s;--drift:10px;"></span>
+    <span class="bubble" style="--s:44px; left:58%; --dur:12s; --delay:-6s;  --drift:-16px;"></span>
+    <span class="bubble" style="--s:30px; left:74%; --dur:10.5s;--delay:-3s; --drift:22px;"></span>
+    <span class="bubble" style="--s:58px; left:88%; --dur:14s; --delay:-8s;  --drift:-12px;"></span>
+  </div>
   <div class="wrap">
     <div class="paper-grid">
-      <div>
+      <div class="paper-glass">
         <span class="tag">D&amp;M TU ZONA GAMER</span>
         <h2>Súmate a la comunidad de tu zona gamer.</h2>
         <p class="lead">D&amp;M es más que una sala de consolas — es donde tu grupo se junta a jugar. PS5, Xbox, Switch y una cabina de VR, con confirmación por WhatsApp y sin cobro en línea.</p>
@@ -524,7 +560,7 @@
       <div class="footer-col">
         <h4>D&amp;M TU ZONA GAMER</h4>
         <p>Urb. El Soler, Parcela 319, Av. 47L con calle 204A, manzana 8, Casa N° 204-37</p>
-        <p>Lunes a domingo · 2:00 PM – 2:00 AM</p>
+        <p>Lunes a domingo · 10:00 AM – 10:00 PM</p>
       </div>
       <div class="footer-col">
         <h4>Contacto</h4>
