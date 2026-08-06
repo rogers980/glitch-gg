@@ -125,6 +125,35 @@
   .nav-cta { display: none; }
   @media (min-width: 640px) { .nav-cta { display: inline-flex; padding: 0.65rem 1.4rem; font-size: 0.7rem; } }
 
+  /* ---------- MENÚ MÓVIL (hamburguesa) — nav.links se oculta bajo 900px y sin esto
+     no quedaba ninguna forma de navegar desde el teléfono. ---------- */
+  .nav-toggle {
+    display: inline-flex; flex-direction: column; justify-content: center; gap: 5px;
+    width: 40px; height: 40px; padding: 0; border: 1.5px solid var(--line-strong); border-radius: 10px;
+    background: rgba(20,16,31,0.6); cursor: pointer; flex-shrink: 0;
+  }
+  @media (min-width: 900px) { .nav-toggle { display: none; } }
+  .nav-toggle span { display: block; width: 18px; height: 2px; margin: 0 auto; background: var(--white); border-radius: 2px; transition: transform 0.2s ease, opacity 0.2s ease; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .nav-mobile {
+    display: none; flex-direction: column; gap: 0.15rem;
+    background: rgba(10,8,18,0.98); border-top: 1px solid var(--line);
+    padding: 0.75rem clamp(1.25rem, 4vw, 3.5rem) 1.25rem;
+  }
+  .nav-mobile.open { display: flex; }
+  @media (min-width: 900px) { .nav-mobile { display: none !important; } }
+  .nav-mobile a {
+    text-decoration: none; color: var(--white); font-family: var(--f-mono); font-size: 0.95rem;
+    letter-spacing: 0.04em; text-transform: uppercase; padding: 0.9rem 0.2rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-mobile a:last-of-type { border-bottom: none; }
+  .nav-mobile a:hover, .nav-mobile a:active { color: var(--violet); }
+  .nav-mobile .btn { margin-top: 0.9rem; justify-content: center; }
+
   /* ---------- DOT SCROLLSPY (lateral) ---------- */
   .dotnav { position: fixed; right: clamp(1rem, 3vw, 2.25rem); top: 50%; transform: translateY(-50%); z-index: 55; display: none; flex-direction: column; gap: 0.85rem; }
   @media (min-width: 780px) { .dotnav { display: flex; } }
@@ -137,7 +166,7 @@
   .hero-bg-video { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; }
   /* Velo oscuro + violeta encima del video, para que el titular y el texto sigan
      leyendose sin importar que frame del clip este pasando en ese momento. */
-  .hero-video-scrim { position: absolute; inset: 0; z-index: 0; background: linear-gradient(180deg, rgba(10,8,18,0.78) 0%, rgba(10,8,18,0.6) 30%, rgba(10,8,18,0.72) 60%, rgba(10,8,18,0.9) 100%), radial-gradient(ellipse 60% 50% at 50% 38%, rgba(10,8,18,0.55), transparent 72%); }
+  .hero-video-scrim { position: absolute; inset: 0; z-index: 0; background: linear-gradient(180deg, rgba(10,8,18,0.55) 0%, rgba(10,8,18,0.2) 22%, rgba(10,8,18,0.3) 60%, rgba(10,8,18,0.7) 100%); }
   .hero-wires { position: absolute; inset: 0; z-index: 0; opacity: 0.5; pointer-events: none; }
   .hero-wires svg { width: 100%; height: 100%; }
   .hero-radial { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: radial-gradient(ellipse 60% 55% at 50% 42%, var(--violet-soft), transparent 70%); }
@@ -146,6 +175,13 @@
   .hero-ghost { position: absolute; inset: 0; z-index: 1; display: flex; align-items: center; justify-content: center; pointer-events: none; opacity: 0.16; mix-blend-mode: screen; }
   .hero-ghost svg { width: min(80vw, 780px); height: auto; filter: blur(0.5px); }
   .hero-inner { position: relative; z-index: 2; max-width: 900px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); display: flex; flex-direction: column; align-items: center; animation: rise 1s var(--ease) both; }
+  /* Halo oscuro AJUSTADO solo al bloque de texto (no a todo el hero): así el video se
+     ve claro alrededor, y el texto sigue legible sin tapar el video entero con un velo. */
+  .hero-inner::before {
+    content: ''; position: absolute; z-index: -1; inset: -10% -6%;
+    background: radial-gradient(ellipse 60% 55% at 50% 40%, rgba(10,8,18,0.75), rgba(10,8,18,0.35) 60%, transparent 85%);
+    filter: blur(6px); pointer-events: none;
+  }
   @keyframes rise { from { opacity: 0; transform: translateY(36px); } to { opacity: 1; transform: none; } }
 
   .crest { width: 62px; height: 62px; margin-bottom: 1.6rem; filter: drop-shadow(0 0 22px var(--violet-glow)); }
@@ -315,7 +351,17 @@
       <a href="#contacto">Contacto</a>
     </nav>
     <a href="#reservar" class="btn nav-cta">Reservar</a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMobile" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
   </div>
+  <nav class="nav-mobile" id="navMobile" aria-label="Menú móvil">
+    <a href="#zonas">Zonas</a>
+    <a href="#galeria">Galería</a>
+    <a href="#reservar">Reservar</a>
+    <a href="#contacto">Contacto</a>
+    <a href="#reservar" class="btn">Reservar</a>
+  </nav>
 </header>
 
 <nav class="dotnav" aria-label="Ir a sección">
@@ -674,6 +720,17 @@
     }
   }
   cargarEstaciones();
+
+  /* ---------- Menú móvil (hamburguesa) ---------- */
+  const navToggle = document.getElementById('navToggle');
+  const navMobile = document.getElementById('navMobile');
+  const closeNavMobile = () => { navMobile.classList.remove('open'); navToggle.setAttribute('aria-expanded', 'false'); };
+  navToggle.addEventListener('click', () => {
+    const open = navMobile.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', String(open));
+  });
+  navMobile.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeNavMobile));
+  window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeNavMobile(); });
 
   /* ---------- Scrollspy de los puntos laterales ---------- */
   const dotLinks = Array.from(document.querySelectorAll('.dotnav a'));
