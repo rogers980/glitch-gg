@@ -95,8 +95,6 @@
 
   .btn { font-family: var(--f-mono); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; padding: 0.95rem 1.9rem; border-radius: 999px; border: 1.5px solid var(--violet); color: var(--white); background: var(--violet); cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; white-space: nowrap; transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease), background 0.2s var(--ease); }
   .btn:hover, .btn:focus-visible { transform: translateY(-2px); box-shadow: 0 0 32px var(--violet-glow); }
-  .btn.outline-dark { background: transparent; border-color: var(--paper-ink); color: var(--paper-ink); }
-  .btn.outline-dark:hover { background: var(--paper-ink); color: var(--paper); box-shadow: none; }
   .btn.outline-light { background: transparent; border-color: var(--line-strong); color: var(--white); }
   .btn.outline-light:hover { background: var(--white); color: var(--ink0); box-shadow: 0 0 28px rgba(245,241,236,0.2); }
   .btn:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--violet); outline-offset: 3px; }
@@ -133,9 +131,6 @@
   .dotnav a { width: 8px; height: 8px; border-radius: 50%; background: var(--line-strong); border: 1px solid transparent; transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; }
   .dotnav a:hover { background: var(--violet); }
   .dotnav a.active { background: var(--violet); transform: scale(1.5); box-shadow: 0 0 12px var(--violet-glow); }
-  /* Sobre la sección clara (blanca) los puntos inactivos son invisibles en blanco-sobre-blanco:
-     se les da un aro oscuro fijo para que sigan viéndose sin depender del color de fondo. */
-  .dotnav.on-light a:not(.active) { background: rgba(10,8,18,0.18); border-color: rgba(10,8,18,0.35); }
 
   /* ---------- HERO (negro, centrado) ---------- */
   .hero { position: relative; min-height: 100svh; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; padding: 7rem 0 4rem; }
@@ -188,12 +183,12 @@
   .hero-cta-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-top: 2.2rem; }
 
   /* ---------- SECCIÓN CLARA DE CONTRASTE ---------- */
-  .paper { background: var(--paper); color: var(--paper-ink); padding: clamp(4rem, 10vw, 7rem) 0; }
+  .paper { background: linear-gradient(160deg, var(--ink2) 0%, var(--ink1) 100%); color: var(--white); padding: clamp(4rem, 10vw, 7rem) 0; }
   .paper-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: center; }
   @media (min-width: 900px) { .paper-grid { grid-template-columns: 1.05fr 0.95fr; gap: clamp(2.5rem, 6vw, 5rem); } }
   .paper .tag { color: var(--violet); }
   .paper h2 { font-size: clamp(2rem, 4.2vw, 3rem); margin-top: 0.9rem; }
-  .paper p.lead { margin-top: 1.3rem; max-width: 46ch; color: var(--paper-muted); font-size: 1.05rem; }
+  .paper p.lead { margin-top: 1.3rem; max-width: 46ch; color: var(--muted); font-size: 1.05rem; }
   .paper-cta { margin-top: 1.8rem; }
   .paper-photo { border-radius: 18px; overflow: hidden; aspect-ratio: 4/3; }
   .paper-photo img { width: 100%; height: 100%; object-fit: cover; }
@@ -221,9 +216,9 @@
   .paper-grid, .nav-cards { position: relative; z-index: 1; }
   .paper-glass {
     padding: clamp(1.75rem, 3vw, 2.5rem); border-radius: 22px;
-    background: rgba(245,241,236,0.62); border: 1px solid rgba(139,60,255,0.18);
+    background: rgba(20,16,31,0.55); border: 1px solid rgba(139,60,255,0.3);
     backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%);
-    box-shadow: 0 20px 45px -25px rgba(139,60,255,0.25);
+    box-shadow: 0 20px 45px -25px rgba(139,60,255,0.45);
   }
 
   .nav-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin-top: clamp(3rem, 6vw, 4.5rem); }
@@ -399,7 +394,7 @@
         <span class="tag">D&amp;M TU ZONA GAMER</span>
         <h2>Súmate a la comunidad de tu zona gamer.</h2>
         <p class="lead">D&amp;M es más que una sala de consolas — es donde tu grupo se junta a jugar. PS5, Xbox, Switch y una cabina de VR, con confirmación por WhatsApp y sin cobro en línea.</p>
-        <div class="paper-cta"><a href="#zonas" class="btn outline-dark">Conoce las zonas</a></div>
+        <div class="paper-cta"><a href="#zonas" class="btn outline-light">Conoce las zonas</a></div>
       </div>
       <div class="paper-photo">
         <img src="images/glitchgg_comunidad.jpg" alt="Grupo de amigos jugando en D&amp;M TU ZONA GAMER" loading="lazy" width="640" height="480" />
@@ -681,19 +676,13 @@
   cargarEstaciones();
 
   /* ---------- Scrollspy de los puntos laterales ---------- */
-  const dotnavEl = document.querySelector('.dotnav');
   const dotLinks = Array.from(document.querySelectorAll('.dotnav a'));
   const sections = dotLinks.map((a) => document.querySelector(a.getAttribute('href')));
-  const lightSection = document.getElementById('comunidad');
   const setActive = () => {
     let idx = 0;
     const mid = window.scrollY + window.innerHeight * 0.4;
     sections.forEach((sec, i) => { if (sec && sec.offsetTop <= mid) idx = i; });
     dotLinks.forEach((a, i) => a.classList.toggle('active', i === idx));
-
-    // La sección "comunidad" tiene fondo claro: los puntos inactivos necesitan el aro oscuro.
-    const overLight = lightSection && mid >= lightSection.offsetTop && mid < lightSection.offsetTop + lightSection.offsetHeight;
-    dotnavEl.classList.toggle('on-light', overLight);
   };
   window.addEventListener('scroll', setActive, { passive: true });
   setActive();
